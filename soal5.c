@@ -5,6 +5,7 @@
 
 int main (int argc, char **argv)
 {
+//
     char novel_filename[] = "novel.txt";
 
     FILE *novel = fopen (novel_filename, "r");
