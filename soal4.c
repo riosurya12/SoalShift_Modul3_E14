@@ -5,19 +5,38 @@
 #include<unistd.h>
 #include<stdlib.h>
 
+int fac(int n)
+
+{
+
+	int m;
+
+	if (n >= 1)
+
+        return n*fac(n-1);
+
+    else
+
+        return 1;
+
+}
+
+
 
 int main()
+
 {
-	int n,a,i;
+
+	int n;
+
 	
+
 	scanf("%d",&n);
-	for(i=n;i>0;i--)
-	{
-		a=i-1;
-		if(a!=0)		
-		n=n*a;
-				
-	}
-	printf("%d\n",n);
+
+	printf("%d",fac(n));
+
+	
+
 	return 0;
+
 }
