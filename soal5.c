@@ -9,18 +9,21 @@ int main (int argc, char **argv)
     char novel_filename[] = "novel.txt";
 
     FILE *novel = fopen (novel_filename, "r");
+    char saya[128];
+    char fina[128];
+    char ifah[128];
 
     char saya[128];
-    while (fgets (saya, 128, novel))
-	if (strstr (saya, "saya"))
+    while (fgets (buffer, 128, novel))
+	if (strstr (buffer, "saya"))
 	    fprintf (output, "%s", saya);
     char fina[128];
-    while (fgets (fina, 128, novel))
-	if (strstr (fina, "Fina"))
+    while (fgets (buffer, 128, novel))
+	if (strstr (buffer, "Fina"))
 	    fprintf (output, "%s", fina);
-    char Ifah[128];
-    while (fgets (Ifah, 128, novel))
-	if (strstr (ifah, "Ifah"))
+    char ifah[128];
+    while (fgets (buffer, 128, novel))
+	if (strstr (buffer, "Ifah"))
 	    fprintf (output, "%s", ifah);
 
      fclose (novel);
