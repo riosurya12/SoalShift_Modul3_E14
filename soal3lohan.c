@@ -1,23 +1,36 @@
 #include <stdio.h>
-#include <sys/ipc.h>
-#include <sys/shm.h>
-#include <unistd.h>
+#include <stdlib.h>
+#include <pthread.h> //library thread
 
-void main()
+
+
+
+
+int main()
 {
-        key_t key = 1234;
-        int *value;
+   char command[50];
+   int pil;
+   
 
-        int shmid = shmget(key, sizeof(int), IPC_CREAT | 0666);
-        value = shmat(shmid, NULL, 0);
+	pthread_create(&(thread(0)), NULL, &lohan_kurang, NULL)
+	pthread_create(&(thread(1)), NULL, &kepiting_kurang, NULL)
 
-        *value = 10;
 
-        printf("Program 1 : %d\n", *value);
+     while (1)
+     {
+        printf("1. Makan Lohan\n 2. Makan Kepiting\n");
+        scanf("%d", &pil);
+	switch (pil)
+	{
+	  case 1 :
+		pthread_create(&(thread(2)), NULL, &makan_lohan);
+                break;
+	  case 2 : 
+		pthread_create(&(thread(3)), NULL, &makan_kepiting);
+		break;
+	}
+     }
 
-        sleep(5);
-
-        printf("Program 1: %d\n", *value);
-        shmdt(value);
-        shmctl(shmid, IPC_RMID, NULL);
+     exit(EXIT_SUCCESS);
 }
+
